@@ -1,11 +1,9 @@
 export const setCookies = () => {
 
     return {
-
-    
         withCredentials: true,
-        credentials: 'include'
-          
+        credentials: 'include',
+        crossDomain: true
     }
 }
 
