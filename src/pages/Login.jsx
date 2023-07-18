@@ -27,7 +27,7 @@ function Login() {
     const { email, password } = values;
     const loginUser = { email, password };
     try {
-      const { data } = await axios.post(`${import.meta.env.VITE_LOCAL_SERVER_HTTP_ROOT_ENDPOINT}/api/v1/auth/login`, loginUser, setCookies());
+      const { data } = await axios.post(`/api/v1/auth/login`, loginUser, setCookies());
       setUserLoggedOut(false)
       setValues({ name: '', email: '', password: '' });
       showAlert({
