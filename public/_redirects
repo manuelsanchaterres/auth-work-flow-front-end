@@ -1,4 +1,4 @@
-/api/*  https://auth-work-flow-api.onrender.com/:splat  200
+/api/*  https://auth-work-flow-api.onrender.com/api/:splat  200
 
 /* /index.html 200
 

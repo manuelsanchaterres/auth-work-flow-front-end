@@ -7,7 +7,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
-  const [userLoggedOut, setUserLoggedOut] = useState(true);
+  // const [userLoggedOut, setUserLoggedOut] = useState(true);
 
   const saveUser = (user) => {
     setUser(user);
@@ -20,17 +20,17 @@ const AppProvider = ({ children }) => {
 
   const fetchUser = async () => {
 
-    if (!userLoggedOut) {
+    // if (!userLoggedOut) {
 
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_LOCAL_SERVER_HTTP_ROOT_ENDPOINT}/api/v1/users/showMe`);
+        const { data } = await axios.get(`${import.meta.env.VITE_LOCAL_SERVER_HTTP_ROOT_ENDPOINT}/api/v1/users/showMe`, setCookies());
         saveUser(data.user);
       } catch (error) {
         removeUser();
       }
       setIsLoading(false);
   
-    }
+    // }
 
   };
 
@@ -38,7 +38,9 @@ const AppProvider = ({ children }) => {
 
     try {
 
-      await axios.delete(`${import.meta.env.VITE_LOCAL_SERVER_HTTP_ROOT_ENDPOINT}/api/v1/auth/logout`, setCookies());
+      await axios.delete(`${import.meta.env.VITE_LOCAL_SERVER_HTTP_ROOT_ENDPOINT}/api/v1/auth/logout`, 
+      setCookies()
+      );
       removeUser();
     } catch (error) {
       console.log(error);
@@ -56,7 +58,7 @@ const AppProvider = ({ children }) => {
         isLoading,
         saveUser,
         user,
-        setUserLoggedOut,
+        // setUserLoggedOut,
         logoutUser,
       }}
     >

@@ -2,18 +2,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import main from '../assets/main.svg';
 import { useGlobalContext } from '../context';
+import { useEffect } from 'react';
 function Dashboard() {
   const { user: user, setUserLoggedOut } = useGlobalContext();
   const navigate = useNavigate()
   // const { name, userId, role } = user;
 
-  if (!user) {
-
-    setUserLoggedOut(true)
-    
-    return navigate('/')
-    
-  }
+  useEffect(() => {
+    if (user === null) {
+      // Call navigate inside the useEffect hook
+      navigate('/');
+    }
+  }, [user, navigate]);  
 
   return (
     <>
