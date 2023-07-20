@@ -6,7 +6,6 @@ import axios from 'axios';
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-
 const VerifyPage = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
